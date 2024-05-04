@@ -1,14 +1,19 @@
 class UI {
     static addMovieToUI(newMovie) {
 
-        // <tr>
-        //     <td><img src="" class="img-fluid img-thumbnail"></td>
-        //     <td></td>
-        //     <td></td>
-        //     <td><a href="#" id="delete-film" class="btn btn-danger">Filmi Sil</a></td>
-        // </tr>
-
+        //Selecting tbody element
         const movieList = document.getElementById('movies');
+        //Selecting movieList title
+        const movieRows = document.querySelectorAll("#movies tr td:nth-child(2)");
+
+        for (let movie of movieRows) {
+            if (movie.textContent.trim() === newMovie.title.trim()) {
+                // If the movie title you want to enter is already in the list
+                this.displayMessages('This film already has been added before!', 'danger');
+                return;
+            }
+        }
+        
         movieList.innerHTML +=
             `
         <tr>
