@@ -40,10 +40,10 @@ function addMovie(event) {
         UI.addMovieToUI(newMovie);
         //Adding movie to LocalStorage
         LStorage.addMovieToStorage(newMovie);
-        //Show success message
-        UI.displayMessages('Movie Added Successfully!', 'succes');
     }
-
+    
+    //Show success message
+    UI.displayMessages('Movie Added Successfully!', 'succes');
 
     UI.clearInputs(titleElement, directorElement, urlElement);
 
