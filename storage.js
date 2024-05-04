@@ -1,10 +1,15 @@
 class LStorage {
     static addMovieToStorage(newMovie) {
-        let movies = this.checkMoviesFromStorage();
+       let movies = JSON.parse(localStorage.getItem('movies'));
 
-        movies.push(newMovie);
+        // Control: Has this movie been added before?
+        if (movies.some(movie => movie.title === newMovie.title)) {
+            return;
+        } else {
+            movies.push(newMovie);
 
-        localStorage.setItem('movies', JSON.stringify(movies));
+            localStorage.setItem('movies', JSON.stringify(movies));
+        }
     }
 
     static checkMoviesFromStorage() {
